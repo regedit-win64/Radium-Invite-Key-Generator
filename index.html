@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invite Key Generator For Radium🤑</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #idiotMessage {
+            display: none;
+            text-align: center;
+            color: black;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .key-generator {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .key-generator input {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="accountForm">
+        <h1>Invite Key Generator For Radium🤑</h1>
+        <div class="form-group">
+            <label for="inviteKey">Invite Key</label>
+            <div class="key-generator">
+                <input type="text" id="inviteKey" value="RADIUM-ABCD-EFGH-IJKL-MNOP" readonly>
+                <button onclick="generateInviteKey()">Generate</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="SlatPCVR">
+            <small>3-20 characters, letters and numbers only</small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" id="password" placeholder="********">
+            <small>8-100 characters</small>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="text" id="confirmPassword" placeholder="********">
+            <small>Must match your password</small>
+        </div>
+
+        <div class="form-group">
+            <label for="dateOfBirth">Date of Birth</label>
+            <div style="display: flex; justify-content: space-between;">
+                <select style="width: 30%;" id="month">
+                    <option>Month</option>
+                </select>
+                <select style="width: 30%;" id="day">
+                    <option>Day</option>
+                </select>
+                <select style="width: 30%;" id="year">
+                    <option>Year</option>
+                </select>
+            </div>
+            <small>You must be at least 13 years old to register.</small>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" id="agreeToTerms">
+            <label for="agreeToTerms" style="display: inline;">I agree to the Radium Code of Conduct</label>
+        </div>
+
+        <button onclick="createAccount()">Create Account</button>
+    </div>
+
+    <div id="idiotMessage" style="display: none;">
+        You are an idiot -IceMain228
+    </div>
+
+    <script>
+        function generateInviteKey() {
+            const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let result = "RADIUM-";
+            for (let i = 0; i < 4; i++) {
+                for (let j = 0; j < 4; j++) {
+                    result += characters.charAt(Math.floor(Math.random() * characters.length));
+                }
+                if (i < 3) {
+                    result += "-";
+                }
+            }
+            document.getElementById("inviteKey").value = result;
+        }
+
+        
+        
+        window.onload = function() {
+            const yearSelect = document.getElementById("year");
+            const monthSelect = document.getElementById("month");
+            const daySelect = document.getElementById("day");
+            const currentYear = new Date().getFullYear();
+
+            const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            for (let i = currentYear; i >= 1900; i--) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                yearSelect.appendChild(option);
+            }
+
+            for (let i = 0; i < months.length; i++) {
+                const option = document.createElement("option");
+                option.value = i + 1;
+                option.text = months[i];
+                monthSelect.appendChild(option);
+            }
+
+            for (let i = 1; i <= 31; i++) {
+                const option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                daySelect.appendChild(option);
+            }
+        };
+
+        function createAccount() {
+            document.getElementById("accountForm").style.display = "none";
+            document.getElementById("idiotMessage").style.display = "block";
+        }
+    </script>
+</body>
+</html>
